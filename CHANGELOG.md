@@ -6,11 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
-## 2.9.73
+## 2.9.72
 ### Changed
 - migrated Shopgate integration for Oxid to GitHub
 
-## 2.9.72
+### Fixed
 - Shopgate coupons in orders are now transferred as net when shop is configured to use net prices
 
 ## 2.9.71
@@ -819,4 +819,4 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## 2.0.0
 - New Release for this module
 
-[Unreleased]: https://github.com/shopgate/cart-integration-oxid/compare/2.9.73...HEAD
+[Unreleased]: https://github.com/shopgate/cart-integration-oxid/compare/2.9.72...HEAD
