@@ -21,10 +21,10 @@ rsync -av ./src/modules/shopgate/views release/package/Bis_eShop_4.6/copy_this
 rsync -av ./src/modules/shopgate/out release/package/Bis_eShop_4.6/copy_this
 rsync -av ./src/modules/shopgate/core release/package/Bis_eShop_4.6/copy_this
 rsync -av ./src/modules/shopgate/admin release/package/Bis_eShop_4.6/copy_this
-rsync -av ./README.md release/package/modules/shopgate
-rsync -av ./LICENSE.md release/package/modules/shopgate
-rsync -av ./CONTRIBUTING.md release/package/modules/shopgate
-rsync -av ./CHANGELOG.md release/package/modules/shopgate
+rsync -av ./README.md release/package/Bis_eShop_4.6/copy_this/modules/shopgate
+rsync -av ./LICENSE.md release/package/Bis_eShop_4.6/copy_this/modules/shopgate
+rsync -av ./CONTRIBUTING.md release/package/Bis_eShop_4.6/copy_this/modules/shopgate
+rsync -av ./CHANGELOG.md release/package/Bis_eShop_4.6/copy_this/modules/shopgate
 
 cd release/package
 zip -r ../../$ZIP_FILE_NAME .
