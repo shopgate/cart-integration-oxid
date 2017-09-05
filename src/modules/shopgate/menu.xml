@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="ISO-8859-15"?>
+<OX>
+    <OXMENU id="NAVIGATION_ESHOPADMIN">
+        <MAINMENU id="mxshopsett">
+            <SUBMENU id="mxpaymeth" cl="admin_payment" list="payment_list">
+                <TAB id="tbclshopgate_payment" cl="shopgate_payment" />
+            </SUBMENU>
+            <SUBMENU id="mxshippingset" cl="deliveryset" list="deliveryset_list">
+                <TAB id="tbclshopgate_shipping" cl="shopgate_shipping" />
+            </SUBMENU>
+        </MAINMENU>
+        <MAINMENU id="mxorders">
+            <SUBMENU id="mxdisplayorders" cl="admin_order" list="order_list">
+                <TAB id="tbclshopgate_order" cl="shopgate_order" />
+            </SUBMENU>
+        </MAINMENU>
+        <MAINMENU id="mxmainmenu">
+            <SUBMENU id="mxcoresett" cl="shop" list="shop_list">
+                <TAB id="tbclmarm_shopgate_config" cl="marm_shopgate_config" />
+            </SUBMENU>
+        </MAINMENU>
+        <MAINMENU id="mxmanageprod">
+            <SUBMENU id="mxarticles" cl="article" list="article_list">
+                <TAB id="tbclmarm_shopgate_article" cl="marm_shopgate_article" />
+            </SUBMENU>
+        </MAINMENU>
+        <MAINMENU id="mxcustnews">
+            <SUBMENU id="mxactions" cl="actions" list="actions_list">
+                <TAB id="tbclshopgate_actions" cl="shopgate_actions" />
+            </SUBMENU>
+        </MAINMENU>
+    </OXMENU>
+</OX>
