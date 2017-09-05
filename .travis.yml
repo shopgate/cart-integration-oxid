@@ -7,7 +7,7 @@ before_script:
 - composer install
 
 script:
-- src/shopgate/vendor/bin/phpunit
+- src/modules/shopgate/vendor/bin/phpunit
 
 jobs:
   include:
