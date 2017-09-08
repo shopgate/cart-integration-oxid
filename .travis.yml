@@ -24,7 +24,7 @@ jobs:
   - stage: Unit Test + Code Style Fixing
     php: 5.6
     script:
-    - curl -L http://cs.sensiolabs.org/download/php-cs-fixer-v2.phar -o php-cs-fixer
+    - curl -L http://files.shopgate.com/travis-ci/php-cs-fixer.phar -o php-cs-fixer
     - chmod a+x php-cs-fixer
     - git checkout $TRAVIS_BRANCH
     - ./php-cs-fixer fix --config=.php-cs.dist --cache-file=.php-cs.cache --diff --dry-run --verbose .
