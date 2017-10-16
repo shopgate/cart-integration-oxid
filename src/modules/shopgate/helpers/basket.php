@@ -209,7 +209,8 @@ class ShopgateBasketHelper extends ShopgateObject
      * @param shopgate_oxbasket $oxBasket
      * @param ShopgateCartBase  $shopgateOrder
      */
-    protected function loadOrderBasketTotal(shopgate_oxbasket &$oxBasket, ShopgateCartBase $shopgateOrder) {
+    protected function loadOrderBasketTotal(shopgate_oxbasket &$oxBasket, ShopgateCartBase $shopgateOrder)
+    {
         $oxPrice = oxNew('oxPrice');
         $oxPrice->setBruttoPriceMode();
         $fDelVATPercent = $oxBasket->getProductsPrice()->getMostUsedVatPercent();
