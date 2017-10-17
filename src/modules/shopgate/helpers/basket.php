@@ -206,17 +206,24 @@ class ShopgateBasketHelper extends ShopgateObject
     }
 
     /**
-     * @param shopgate_oxbasket $oxBasket
-     * @param ShopgateCartBase  $shopgateOrder
+     * @param shopgate_oxbasket $oxidBasket
+     * @param ShopgateCartBase  $shopgateCart
+     *
+     * @post if $oxidBasket supports the setPrice method price will be overwritten
      */
-    protected function loadOrderBasketTotal(shopgate_oxbasket &$oxBasket, ShopgateCartBase $shopgateOrder)
+    protected function loadOrderBasketTotal(shopgate_oxbasket $oxidBasket, ShopgateCartBase $shopgateCart)
     {
+        if (!method_exists($oxidBasket,"setPrice")) {
+
+            return;
+        }
+
+        /** @var oxPrice $oxPrice */
         $oxPrice = oxNew('oxPrice');
         $oxPrice->setBruttoPriceMode();
-        $fDelVATPercent = $oxBasket->getProductsPrice()->getMostUsedVatPercent();
-        $oxPrice->setVat($fDelVATPercent);
-        $oxPrice->setPrice($shopgateOrder->getAmountComplete());
-        $oxBasket->setPrice($oxPrice);
+        $oxPrice->setVat($oxidBasket->getProductsPrice()->getMostUsedVatPercent());
+        $oxPrice->setPrice($shopgateCart->getAmountComplete());
+        $oxidBasket->setPrice($oxPrice);
     }
 
     /**
