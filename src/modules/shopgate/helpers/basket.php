@@ -214,7 +214,6 @@ class ShopgateBasketHelper extends ShopgateObject
     protected function loadOrderBasketTotal(shopgate_oxbasket $oxidBasket, ShopgateCartBase $shopgateCart)
     {
         if (method_exists($oxidBasket,"setPrice")) {
-
             /** @var oxPrice $oxPrice */
             $oxPrice = oxNew('oxPrice');
             $oxPrice->setBruttoPriceMode();

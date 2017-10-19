@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## 2.9.73
+### Changed
+- Added method to directly set Oxid order total to be equal to Shopgate order total
+
 ## 2.9.72
 ### Changed
 - migrated Shopgate integration for Oxid to GitHub
