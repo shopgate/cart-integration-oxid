@@ -5,8 +5,6 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
-
-## 2.9.73
 ### Changed
 - Added method to directly set Oxid order total to be equal to Shopgate order total
 
