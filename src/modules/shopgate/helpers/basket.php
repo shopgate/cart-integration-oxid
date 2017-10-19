@@ -102,6 +102,8 @@ class ShopgateBasketHelper extends ShopgateObject
             $this->loadOrderBasketPayment($oxBasket, $shopgateOrder);
         }
 
+        $this->loadOrderBasketTotal($oxBasket, $shopgateOrder);
+
         // As soon as the last calculateBasket() call happened we need to deactivate the deliverySet
         $this->shippingHelper->deactivateDeliverySet();
 
@@ -200,6 +202,26 @@ class ShopgateBasketHelper extends ShopgateObject
             $oxPrice->setVat($oxBasket->getProductsPrice()->getMostUsedVatPercent());
             $oxPrice->setPrice($paymentCost);
             $oxBasket->setCost('oxpayment', $oxPrice);
+        }
+    }
+
+    /**
+     * @param shopgate_oxbasket $oxidBasket
+     * @param ShopgateCartBase  $shopgateCart
+     *
+     * @post if $oxidBasket supports the setPrice method price will be overwritten
+     */
+    protected function loadOrderBasketTotal(shopgate_oxbasket $oxidBasket, ShopgateCartBase $shopgateCart)
+    {
+        if (method_exists($oxidBasket,"setPrice")) {
+            /** @var oxPrice $oxPrice */
+            $oxPrice = oxNew('oxPrice');
+            $oxPrice->setBruttoPriceMode();
+            $oxPrice->setVat(
+                $oxidBasket->getProductsPrice()->getMostUsedVatPercent()
+            );
+            $oxPrice->setPrice($shopgateCart->getAmountComplete());
+            $oxidBasket->setPrice($oxPrice);
         }
     }
 
