@@ -2,7 +2,7 @@
 
 ZIP_FILE_NAME=shopgate-oxid-integration.zip
 
-rm -rf src/shopgate/vendor release/package $ZIP_FILE_NAME
+rm -rf src/modules/shopgate/vendor release/package $ZIP_FILE_NAME
 
 mkdir release/package
 mkdir release/package/Ab_eShop_4.7
