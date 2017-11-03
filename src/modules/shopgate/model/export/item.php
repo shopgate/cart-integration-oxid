@@ -292,6 +292,7 @@ class Shopgate_Model_Export_Product extends Shopgate_Model_Catalog_Product
             'setName',
             'setPrice',
             'setProperties',
+            'setRelations',
             'setShipping',
             'setStock',
             'setUid',
