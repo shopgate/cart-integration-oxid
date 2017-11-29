@@ -5,6 +5,8 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [2.9.74] - 2017-11-29
 ### Fixed
 - export of product relations for child products
 
@@ -825,5 +827,6 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## 2.0.0
 - New Release for this module
 
-[Unreleased]: https://github.com/shopgate/cart-integration-oxid/compare/2.9.73...HEAD
+[Unreleased]: https://github.com/shopgate/cart-integration-oxid/compare/2.9.74...HEAD
+[2.9.74]: https://github.com/shopgate/cart-integration-oxid/compare/2.9.73...2.9.74
 [2.9.73]: https://github.com/shopgate/cart-integration-oxid/compare/2.9.72...2.9.73
