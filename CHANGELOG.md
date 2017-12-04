@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## [2.9.74] - 2017-11-29
 ### Fixed
 - export of product relations for child products
+- export of reviews for child products
 
 ## 2.9.73
 ### Changed
