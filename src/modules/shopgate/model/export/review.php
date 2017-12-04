@@ -48,7 +48,7 @@ class Shopgate_Model_Export_Review extends Shopgate_Model_Catalog_Review
 
         $sql = "SELECT OXPARENTID FROM oxarticles WHERE oxid = '{$oxId}'";
         $oxParentId  = marm_shopgate::dbGetOne($sql);
-        if (!empty($oxParentId)){
+        if (!empty($oxParentId)) {
             $oxId = $oxParentId;
         }
 
