@@ -5,11 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+- export of reviews for child products
 
 ## [2.9.74] - 2017-11-29
 ### Fixed
 - export of product relations for child products
-- export of reviews for child products
 
 ## 2.9.73
 ### Changed
