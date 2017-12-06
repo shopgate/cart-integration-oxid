@@ -6,6 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 - export of reviews for child products
+- stopped export of inactive reviews
 
 ## [2.9.74] - 2017-11-29
 ### Fixed
