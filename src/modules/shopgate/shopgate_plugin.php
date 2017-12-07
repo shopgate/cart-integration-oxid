@@ -782,6 +782,9 @@ class ShopgatePluginOxid extends ShopgatePlugin
         /** @var oxReview $oxReview */
         $oxReview = oxNew('oxReview');
         $sql      = "SELECT oxid FROM {$oxReview->getViewName()} WHERE oxobjectid != ''";
+        $sql      .= marm_shopgate::getOxConfig()->getConfigParam('blGBModerate')
+            ? " AND OXACTIVE = 1"
+            : '';
         $sql      .= !empty($uids)
             ? " AND oxid in ('" . implode("','", $uids) . "')"
             : '';
