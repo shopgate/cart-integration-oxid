@@ -832,6 +832,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## 2.0.0
 - New Release for this module
 
-[Unreleased]: https://github.com/shopgate/cart-integration-oxid/compare/2.9.74...HEAD
+[Unreleased]: https://github.com/shopgate/cart-integration-oxid/compare/2.9.75...HEAD
+[2.9.75]: https://github.com/shopgate/cart-integration-oxid/compare/2.9.74...2.9.75
 [2.9.74]: https://github.com/shopgate/cart-integration-oxid/compare/2.9.73...2.9.74
 [2.9.73]: https://github.com/shopgate/cart-integration-oxid/compare/2.9.72...2.9.73
