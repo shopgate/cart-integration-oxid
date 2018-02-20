@@ -57,18 +57,18 @@ class ShopgateVoucherHelper extends ShopgateObject
         $oxVoucherSeries = oxNew('oxVoucherSerie');
         $shopId          = marm_shopgate::getOxConfig()->getShopId();
 
-        $qry = "INSERT INTO `{$oxVoucherSeries->getViewName()}`
+        $qry = "INSERT INTO `{$oxVoucherSeries->getViewName(true)}`
 				(`oxid`, `oxshopid`, `oxserienr`, `oxseriedescription`, `oxdiscounttype`)
 		 VALUES ('{$voucherId}', '{$shopId}', 'Shopgate Gutscheine', 'Shopgate Gutscheine', 'absolute')";
         marm_shopgate::dbExecute($qry);
 
-        $qry    = "SELECT * FROM `{$oxVoucherSeries->getViewName()}` o WHERE o.oxid = '{$voucherId}'";
+        $qry    = "SELECT * FROM `{$oxVoucherSeries->getViewName(true)}` o WHERE o.oxid = '{$voucherId}'";
         $result = marm_shopgate::dbGetAll($qry);
 
         if (isset($result[0]['OXMAPID'])) {
             // there is an additional table "oxvoucherseries2shop" in newer Oxid versions
             // without an entry there, the series won't be found
-            $table = $oxVoucherSeries->getViewName() . '2shop';
+            $table = $oxVoucherSeries->getViewName(true) . '2shop';
             $qry   = "INSERT INTO `{$table}`
 				(`oxshopid`, `oxmapobjectid`)
 		 	 VALUES ('{$shopId}', '{$result[0]['OXMAPID']}')";
