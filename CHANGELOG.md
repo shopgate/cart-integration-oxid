@@ -6,11 +6,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
-## [2.9.76]
+## [2.9.76] - 2018-03-13
 ### Fixed
 - Shopgate coupon issue related to Oxid Enterprise
 
-## [2.9.75] - 2017-01-23
+## [2.9.75] - 2018-01-23
 ### Fixed
 - export of reviews for child products
 - stopped export of inactive reviews
