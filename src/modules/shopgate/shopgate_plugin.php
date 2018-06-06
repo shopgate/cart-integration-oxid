@@ -414,30 +414,22 @@ class ShopgatePluginOxid extends ShopgatePlugin
 				WHERE os.is_sent_to_shopgate = 0
 				AND o.oxsenddate != '0000-00-00 00:00:00'";
 
-        /** @var ADORecordSet_empty $rs */
-        $rs = marm_shopgate::dbExecute($qry);
-        if (!$rs) {
-            throw new ShopgateLibraryException(
-                ShopgateLibraryException::UNKNOWN_ERROR_CODE,
-                marm_shopgate::getDb()->ErrorMsg(),
-                true
-            );
-        }
+        $results = marm_shopgate::dbGetAll($qry);
 
-        if ($rs != false && $rs->recordCount() > 0) {
+        if (!empty($results)) {
             $count = 0;
-            while (!$rs->EOF) {
+            foreach ($results as $rs) {
                 $shopgateOrder = clone $oBaseOxOrderShopgate;
                 try {
-                    $shopgateOrder->load($rs->fields['OXID']);
+                    $shopgateOrder->load($rs['OXID']);
                     $shopgateOrder->confirmShipping();
+                    $count++;
                 } catch (Exception $e) {
                     $orderNumber = $shopgateOrder->oxordershopgate__order_number->value;
                     $msg         = utf8_encode($e->getMessage());
                     $message     .= __FUNCTION__ . "(): Error confirming shipping for order #{$orderNumber}: $msg \n";
                     $errorcount++;
                 }
-                $rs->moveNext();
             }
             $message .= __FUNCTION__ . "(): confirmed shipping for $count orders \n";
         } else {

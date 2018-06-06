@@ -223,7 +223,8 @@ class marm_shopgate
 
         $dbObj = oxDb::getDb(true);
         if (version_compare($currentVersion, $breakVersion, ">=")) {
-            $dbObj = oxDb::getDb(ADODB_FETCH_ASSOC);
+            $mode = defined(ADODB_FETCH_ASSOC) ? ADODB_FETCH_ASSOC : 2;
+            $dbObj = oxDb::getDb($mode);
         }
 
         return $dbObj;

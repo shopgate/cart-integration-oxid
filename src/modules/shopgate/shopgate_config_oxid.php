@@ -80,9 +80,6 @@ class ShopgateConfigOxid extends ShopgateConfig
     /** @var double */
     protected $sys_default_vat;
 
-    /** @var string */
-    protected $database_oxid_collation;
-
     /** @var ShopgateUnknownOxidConfigFields */
     protected $unknownOxidConfigFields;
 
@@ -136,10 +133,6 @@ class ShopgateConfigOxid extends ShopgateConfig
         }
 
         $this->loadFromDatabase();
-
-        $qry                           = "SHOW FULL COLUMNS FROM `oxarticles` WHERE Field = 'OXID'";
-        $result                        = marm_shopgate::getDb()->query($qry);
-        $this->database_oxid_collation = $result->fields['Collation'];
 
         return true;
     }
@@ -523,22 +516,6 @@ class ShopgateConfigOxid extends ShopgateConfig
     public function setHtaccessPassword($value)
     {
         $this->htaccess_password = $value;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDatabaseOxidCollation()
-    {
-        return $this->database_oxid_collation;
-    }
-
-    /**
-     * @param string $value
-     */
-    public function setDatabaseOxidCollation($value)
-    {
-        $this->database_oxid_collation = $value;
     }
 
     /**
