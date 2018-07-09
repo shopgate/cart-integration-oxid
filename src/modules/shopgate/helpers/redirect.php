@@ -38,14 +38,8 @@ class ShopgateRedirectHelper extends ShopgateObject
         }
         $sQ = "SELECT `oxseourl` FROM `oxseo` WHERE `oxobjectid` = '" . $objectId
             . "' AND `oxlang` = '$languageId' AND `oxshopid` = '$shopId' LIMIT 1";
+        $seoUrl = marm_shopgate::getDb()->getOne($sQ);
 
-        $oRs = marm_shopgate::getDb()->query($sQ);
-
-        $seoUrl = '';
-        if (!$oRs->EOF) {
-            $seoUrl = $oRs->fields['oxseourl'];
-        }
-
-        return $seoUrl;
+        return (string)$seoUrl;
     }
 }

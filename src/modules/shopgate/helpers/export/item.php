@@ -78,7 +78,7 @@ class ShopgateItemExportHelper
         $this->itemInCategorySortCache = array();
 
         /** @var ADORecordSet_empty $rs */
-        $rs     = $this->marmShopgate->dbExecute("SELECT MAX(oxpos) AS max FROM oxobject2category");
+        $rs     = $this->marmShopgate->dbGetOne("SELECT MAX(oxpos) AS max FROM oxobject2category");
         $maxPos = !empty($rs)
             ? (int)$rs->fields['max']
             : 1000000;
@@ -94,11 +94,9 @@ class ShopgateItemExportHelper
 			JOIN `oxobject2category` oc ON (c.oxid = oc.oxcatnid)
 			WHERE oc.oxobjectid IN ('" . implode("', '", $articleIds) . "')
 			  AND c.oxdefsort = ''";
-
-        $rs = $this->marmShopgate->dbExecute($select);
-        while (!empty($rs) && !$rs->EOF) {
-            $this->itemInCategorySortCache[$rs->fields['oxcatnid']][$rs->fields['oxobjectid']] = $maxPos - $rs->fields['oxpos'];
-            $rs->MoveNext();
+        $results = $this->marmShopgate->dbGetAll($select);
+        foreach ($results as $rs) {
+            $this->itemInCategorySortCache[$rs['oxcatnid']][$rs['oxobjectid']] = $maxPos - $rs['oxpos'];
         }
     }
 
@@ -114,11 +112,9 @@ class ShopgateItemExportHelper
 			AND a.shopgate_is_highlight = 1
 			GROUP BY a2a.oxartid
 			HAVING cnt > 0";
-        /** @var ADORecordSet_empty $rs */
-        $rs = $this->marmShopgate->dbExecute($select);
-        while (!empty($rs) && !$rs->EOF) {
-            $this->highlightItemsCache[] = $rs->fields['oxartid'];
-            $rs->MoveNext();
+        $results = $this->marmShopgate->dbGetAll($select);
+        foreach ($results as $rs) {
+            $this->highlightItemsCache[] = $rs['oxartid'];
         }
     }
 
