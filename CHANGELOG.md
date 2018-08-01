@@ -6,7 +6,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
-## [2.9.77] - 2018-08-1
+## [2.9.77] - 2018-08-01
 ### Added
 - compatibility with Oxid 6
 
