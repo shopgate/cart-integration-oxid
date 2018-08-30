@@ -299,6 +299,8 @@ class Shopgate_Model_Export_Product extends Shopgate_Model_Catalog_Product
             'setVisibility',
             'setIdentifiers',
             'setWeight',
+            'setTaxClass',
+            'setTaxPercent',
         );
     }
 
