@@ -7,7 +7,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## [Unreleased]
 ### Fixed
 - missing taxes on child products during item export
-- fix redirect and images in order history view
+- redirect not working and images not shown in order history view
 
 ## [2.9.77] - 2018-08-02
 ### Added
