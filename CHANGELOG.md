@@ -7,6 +7,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## [Unreleased]
 ### Fixed
 - missing taxes on child products during item export
+- redirect to product detail view not working in order history view
+- product images not shown in order history view
 
 ## [2.9.77] - 2018-08-02
 ### Added

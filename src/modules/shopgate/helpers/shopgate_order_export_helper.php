@@ -470,12 +470,22 @@ class ShopgateOrderExportHelper extends ShopgateObject
      */
     private function getItem(oxOrderArticle $oxOrderArticle, $currency)
     {
-        $item = new ShopgateExternalOrderItem();
-        if ($this->uniqueArticleIdField == 'oxid') {
-            $item->setItemNumber($oxOrderArticle->oxorderarticles__oxartid->value);
-        } else {
-            $item->setItemNumber($oxOrderArticle->oxorderarticles__oxartnum->value);
+        $item             = new ShopgateExternalOrderItem();
+        $oxArticle        = $oxOrderArticle->getArticle();
+        $itemNumberPrefix = '';
+
+        if (!$oxArticle->getParentArticle()
+            && !$oxArticle->sg_act_as_child && $this->config->isVariantParentBuyable()
+        ) {
+            $itemNumberPrefix = 'parent';
         }
+
+        if ($this->uniqueArticleIdField == 'oxid') {
+            $item->setItemNumber($itemNumberPrefix . $oxOrderArticle->oxorderarticles__oxartid->value);
+        } else {
+            $item->setItemNumber($itemNumberPrefix . $oxOrderArticle->oxorderarticles__oxartnum->value);
+        }
+
         $item->setItemNumberPublic($oxOrderArticle->oxorderarticles__oxartnum->value);
         $item->setQuantity($oxOrderArticle->oxorderarticles__oxamount->value);
         $item->setName($oxOrderArticle->oxorderarticles__oxtitle->value);
