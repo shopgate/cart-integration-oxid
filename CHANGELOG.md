@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Added
+- compatibility with Oxid CE 6.1
+
+### Removed
+- compatibility with Oxid CE <4.10.6
 
 ## [2.9.78] - 2018-03-28
 ### Fixed
