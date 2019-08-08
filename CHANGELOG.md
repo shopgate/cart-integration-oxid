@@ -6,7 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 ### Added
-- compatibility with Oxid 6.1
+- compatibility with Oxid CE 6.1
+
+### Removed
+- compatibility with Oxid CE <4.10.6
 
 ## [2.9.78] - 2018-03-28
 ### Fixed
