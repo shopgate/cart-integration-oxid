@@ -50,7 +50,7 @@ class marm_shopgate_oxarticle extends marm_shopgate_oxarticle_parent
         return parent::isBuyable();
     }
 
-    public function checkForStock($dAmount, $dArtStockAmount = 0)
+    public function checkForStock($dAmount, $dArtStockAmount = 0, $selectForUpdate = false)
     {
         // disable stock check on place order from shopgate
         if (
@@ -61,7 +61,7 @@ class marm_shopgate_oxarticle extends marm_shopgate_oxarticle_parent
             return true;
         }
 
-        return parent::checkForStock($dAmount, $dArtStockAmount);
+        return parent::checkForStock($dAmount, $dArtStockAmount, $selectForUpdate);
     }
 
     public function isVisible()
