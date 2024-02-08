@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright Shopgate Inc.
  *
@@ -32,7 +33,6 @@ if (!function_exists('getShopBasePath')) {
     require_once(getShopBasePath() . "/core/adodblite/adodb.inc.php");
 }
 
-require_once dirname(__FILE__) . '/vendor/autoload.php';
 require_once dirname(__FILE__) . '/helpers/cart.php';
 require_once dirname(__FILE__) . '/helpers/redirect.php';
 require_once dirname(__FILE__) . '/helpers/export/customer.php';
@@ -1081,7 +1081,8 @@ class ShopgatePluginOxid extends ShopgatePlugin
         $oOxidOrder->save();
 
         $oOxidOrderShopgate->oxordershopgate__order_data = new oxField(
-            base64_encode(serialize($order)), oxField::T_RAW
+            base64_encode(serialize($order)),
+            oxField::T_RAW
         );
         $oOxidOrderShopgate->save();
 
@@ -1155,7 +1156,8 @@ class ShopgatePluginOxid extends ShopgatePlugin
 
         if ($shopgateOrder->getIsPaid()) {
             $oxOrder->oxorder__oxpaid = new oxField($shopgateOrder->getPaymentTime("Y-m-d H:i:s"), oxField::T_RAW);
-        } elseif ($this->config->getUnblockedOrdersAsPaid()
+        } elseif (
+            $this->config->getUnblockedOrdersAsPaid()
             && $shopgateOrder->getPaymentGroup() == ShopgateOrder::SHOPGATE
             && !$shopgateOrder->getIsShippingBlocked()
         ) {
@@ -1920,7 +1922,8 @@ class ShopgatePluginOxid extends ShopgatePlugin
                 $oxAddress->oxaddress__oxaddinfo   = new oxField($address->getStreet2(), oxField::T_RAW);
                 $oxAddress->oxaddress__oxcity      = new oxField($address->getCity(), oxField::T_RAW);
                 $oxAddress->oxaddress__oxcountryid = new oxField(
-                    $this->userHelper->getCountryOxid($address->getCountry()), oxField::T_RAW
+                    $this->userHelper->getCountryOxid($address->getCountry()),
+                    oxField::T_RAW
                 );
                 $oxAddress->oxaddress__oxstateid   = new oxField(
                     $this->userHelper->getStateOxid($address->getState()),
@@ -1929,7 +1932,8 @@ class ShopgatePluginOxid extends ShopgatePlugin
                 $oxAddress->oxaddress__oxzip       = new oxField($address->getZipcode(), oxField::T_RAW);
                 $oxAddress->oxaddress__oxfon       = new oxField($address->getPhone(), oxField::T_RAW);
                 $oxAddress->oxaddress__oxsal       = new oxField(
-                    $this->userHelper->getOxidGender($address->getGender()), oxField::T_RAW
+                    $this->userHelper->getOxidGender($address->getGender()),
+                    oxField::T_RAW
                 );
                 $oxAddress->save();
             }

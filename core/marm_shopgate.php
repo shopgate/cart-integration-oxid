@@ -24,7 +24,6 @@ $shopgate_plugin_dir = dirname(__FILE__) . '/..';
 if (stripos($shopgate_plugin_dir, 'modules/shopgate') === false) {
     $shopgate_plugin_dir .= '/modules/shopgate';
 }
-require_once "$shopgate_plugin_dir/vendor/autoload.php";
 require_once "$shopgate_plugin_dir/shopgate_install_helper.php";
 
 class marm_shopgate

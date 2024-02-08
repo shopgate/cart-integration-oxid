@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright Shopgate Inc.
  *
@@ -19,7 +20,6 @@
  * @license   http://www.apache.org/licenses/LICENSE-2.0 Apache License, Version 2.0
  */
 
-require_once dirname(__FILE__) . '/../src/modules/shopgate/vendor/autoload.php';
 require_once dirname(__FILE__) . '/../src/modules/shopgate/shopgate_config_oxid.php';
 require_once dirname(__FILE__) . '/../src/modules/shopgate/helpers/cart.php';
 require_once dirname(__FILE__) . '/../src/modules/shopgate/helpers/config/unknown_oxid_config_fields.php';
