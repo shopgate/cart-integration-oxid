@@ -5,11 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Changed
+- Updated to use Shopgate Library version 2.10.2
+- Refactored the plugin structure to directly use installation via composer
+
 ### Added
-- compatibility with Oxid CE 6.1
+- Added compatibility with Oxid CE 6.1 and Oxid CE/EE 6.5
+- Introduced compatibility with PHP 8.x
 
 ### Removed
-- compatibility with Oxid CE <4.10.6
+- Removed compatibility with Oxid CE versions below 4.10.6
+- Dropped compatibility with PHP versions below 5.6
 
 ## [2.9.78] - 2018-03-28
 ### Fixed
