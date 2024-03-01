@@ -5,11 +5,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Fixed
+- PHP warnings by accessing undefined constant `ADODB_FETCH_ASSOC`
+- installation can now be resumed after it was aborted during installing database schemas
+
+### Changed
+- uses Shopgate Cart Integration SDK v2.10.2
+
 ### Added
 - compatibility with Oxid CE 6.1
-
-### Removed
-- compatibility with Oxid CE <4.10.6
+- compatibility with PHP 7 & 8
+- enabled installation via Composer / packagist.org if desired
 
 ## [2.9.78] - 2018-03-28
 ### Fixed
