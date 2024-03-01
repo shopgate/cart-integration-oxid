@@ -19,10 +19,21 @@
  * @license   http://www.apache.org/licenses/LICENSE-2.0 Apache License, Version 2.0
  */
 
+if (!function_exists('getShopBasePath')) {
+    function getShopBasePath()
+    {
+        return dirname(__FILE__) . '/../../../';
+    }
+}
+
+if (file_exists(getShopBasePath() . "bootstrap.php")) {
+    include_once getShopBasePath() . "bootstrap.php";
+}
+
 /**
  * Frontend controller for handling Shopgate integration requests
  */
-class marm_shopgate_api extends oxUBase
+class marm_shopgate_api extends \OxidEsales\Eshop\Application\Controller\FrontendController
 {
     /**
      * For performance.

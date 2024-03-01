@@ -27,11 +27,6 @@ class ShopgateInstallHelper
 
     public function install($resendUid = false)
     {
-        $tables = oxDb::getDb()->getAll("show tables like 'oxordershopgate'");
-        if (count($tables) < 1) {
-            $this->initDB();
-        }
-
         $defaultRedirectConfigKey = marm_shopgate::getInstance()->getOxidConfigKey('enable_default_redirect');
         marm_shopgate::getOxConfig()->saveShopConfVar('checkbox', $defaultRedirectConfigKey, false);
 
@@ -46,8 +41,14 @@ class ShopgateInstallHelper
         $statements = $this->readSqlFile(dirname(__FILE__) . '/install.sql');
         $db         = oxDb::getDb();
         foreach ($statements as $statement) {
-            if (!empty($statement)) {
+            if (empty($statement)) {
+                continue;
+            }
+
+            try {
                 $db->Execute($statement);
+            } catch (Exception $e) {
+                ShopgateLogger::getInstance()->log('Error while executing SQL statement: ' . $e->getMessage());
             }
         }
         if (!$this->updateDbViews()) {
