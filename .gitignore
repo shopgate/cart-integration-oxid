@@ -4,6 +4,6 @@
 /nbproject
 /.settings
 /.idea
-/src/modules/shopgate/vendor/
+/vendor/
 /.php-cs.cache
 /release/package

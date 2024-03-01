@@ -13,6 +13,7 @@ rsync -av ./README.md release/package/Ab_eShop_4.7/copy_this/modules/shopgate
 rsync -av ./LICENSE.md release/package/Ab_eShop_4.7/copy_this/modules/shopgate
 rsync -av ./CONTRIBUTING.md release/package/Ab_eShop_4.7/copy_this/modules/shopgate
 rsync -av ./CHANGELOG.md release/package/Ab_eShop_4.7/copy_this/modules/shopgate
+rsync -av ./vendor release/package/Ab_eShop_4.7/copy_this/modules/shopgate
 
 mkdir release/package/Bis_eShop_4.6
 mkdir release/package/Bis_eShop_4.6/copy_this
@@ -25,6 +26,7 @@ rsync -av ./README.md release/package/Bis_eShop_4.6/copy_this/modules/shopgate
 rsync -av ./LICENSE.md release/package/Bis_eShop_4.6/copy_this/modules/shopgate
 rsync -av ./CONTRIBUTING.md release/package/Bis_eShop_4.6/copy_this/modules/shopgate
 rsync -av ./CHANGELOG.md release/package/Bis_eShop_4.6/copy_this/modules/shopgate
+rsync -av ./vendor release/package/Bis_eShop_4.6/copy_this/modules/shopgate
 
 cd release/package
 zip -r ../../$ZIP_FILE_NAME .

@@ -3,11 +3,12 @@
   "description": "Integrates the Oxid shopping cart solution with Shopgate",
   "homepage": "https://github.com/shopgate/cart-integration-oxid",
   "license": "Apache-2.0",
-  "config": {
-    "platform": {
-      "php": "5.3.3"
-    },
-    "vendor-dir": "src/modules/shopgate/vendor"
+  "type": "oxideshop-module",
+  "extra": {
+    "oxideshop": {
+      "source-directory": "src/modules/shopgate",
+      "target-directory": "shopgate"
+    }
   },
   "authors": [
     {
