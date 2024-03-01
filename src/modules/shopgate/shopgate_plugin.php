@@ -32,7 +32,12 @@ if (!function_exists('getShopBasePath')) {
     require_once(getShopBasePath() . "/core/adodblite/adodb.inc.php");
 }
 
-require_once dirname(__FILE__) . '/vendor/autoload.php';
+// package-internal autoloader only exists upon manual installation, not on Composer installation
+$composerAutoloaderPath = dirname(__FILE__) . '/vendor/autoload.php';
+if (file_exists($composerAutoloaderPath)) {
+    require_once($composerAutoloaderPath);
+}
+
 require_once dirname(__FILE__) . '/helpers/cart.php';
 require_once dirname(__FILE__) . '/helpers/redirect.php';
 require_once dirname(__FILE__) . '/helpers/export/customer.php';

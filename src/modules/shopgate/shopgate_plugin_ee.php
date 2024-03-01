@@ -30,7 +30,12 @@ if (!function_exists('getShopBasePath')) {
     require_once(getShopBasePath() . "/core/adodblite/adodb.inc.php");
 }
 
-require_once dirname(__FILE__) . '/vendor/autoload.php';
+// package-internal autoloader only exists upon manual installation, not on Composer installation
+$composerAutoloaderPath = dirname(__FILE__) . '/vendor/autoload.php';
+if (file_exists($composerAutoloaderPath)) {
+    require_once($composerAutoloaderPath);
+}
+
 require_once dirname(__FILE__) . '/metadata.php';
 require_once dirname(__FILE__) . '/shopgate_plugin.php';
 require_once dirname(__FILE__) . '/helpers/voucher_ee.php';
