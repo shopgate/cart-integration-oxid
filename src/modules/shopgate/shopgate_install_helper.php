@@ -31,6 +31,8 @@ class ShopgateInstallHelper
 
     public function install($resendUid = false)
     {
+        $this->initDB();
+
         $defaultRedirectConfigKey = marm_shopgate::getInstance()->getOxidConfigKey('enable_default_redirect');
         marm_shopgate::getOxConfig()->saveShopConfVar('checkbox', $defaultRedirectConfigKey, false);
 
