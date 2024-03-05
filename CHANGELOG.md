@@ -18,7 +18,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - compatibility with PHP 7 & 8
 - enabled installation via Composer / packagist.org if desired
 
-## [2.9.78] - 2018-03-28
+## [2.9.78] - 2019-03-28
 ### Fixed
 - missing taxes on child products during item export
 - redirect to product detail view not working in order history view
