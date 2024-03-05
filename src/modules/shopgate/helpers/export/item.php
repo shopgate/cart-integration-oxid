@@ -416,12 +416,8 @@ class ShopgateItemExportHelper
 
             if ($maxTime) {
                 $text = $this->getTranslation(
-                        'PAGE_DETAILS_DELIVERYTIME_DELIVERYTIME',
-                        array(
-                            'DELIVERY_TIME',
-                            'DELIVERYTIME',
-                        )
-                    ) . ' ';
+                    'PAGE_DETAILS_DELIVERYTIME_DELIVERYTIME', array('DELIVERY_TIME', 'DELIVERYTIME')
+                ) . ' ';
                 if ($minTime) {
                     $text .= $minTime . ' - ';
                 }
