@@ -8,3 +8,4 @@
 /.php-cs.cache
 /release/package
 composer.lock
+.DS_Store
