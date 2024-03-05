@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ZIP_FILE_NAME=shopgate-oxid-integration.zip
+ZIP_FILE_NAME=shopgate-oxid-integration-${TAG_NAME}-${PHP_VERSION}.zip
 
 rm -rf src/modules/shopgate/vendor release/package $ZIP_FILE_NAME
 

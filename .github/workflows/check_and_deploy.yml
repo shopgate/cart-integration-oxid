@@ -1,0 +1,162 @@
+name: Run tests, dependency audit, CS fixer & deploy
+on: [push]
+jobs:
+  check:
+    name: Audit & code style checks
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.2
+      - name: Install dependencies (for CS fixer)
+        run: composer install
+      - name: Audit
+        run: composer audit
+      - name: Code Style
+        run: composer check
+
+  test:
+    name: Unit tests on PHP ${{ matrix.php-versions }}
+    needs: [ check ]
+    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        php-versions: [ '5.6', '7.0', '7.1', '7.2', '7.3', '7.4', '8.0', '8.1' ]
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+      - name: Install dependencies
+        run: composer install
+      - name: Test
+        run: composer test
+
+  build-zip-php-5:
+    name: Build the PHP 5.6 compatible ZIP
+    needs: [check, test]
+    runs-on: ubuntu-20.04
+    if: startsWith(github.ref, 'refs/tags/') # only tags
+    steps:
+      - name: Get tag name
+        id: set-tag
+        run: echo "TAG_NAME=${GITHUB_REF:10}" >> $GITHUB_OUTPUT
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 5.6
+      - name: Build ZIP
+        run: ./release/build_release_package.sh
+        env:
+          TAG_NAME: ${{ steps.set-tag.outputs.TAG_NAME }}
+          PHP_VERSION: 'php-5.6'
+      - name: Store to cache
+        uses: actions/cache@v4
+        with:
+          path: ./release/shopgate-oxid-integration-${{ steps.set-tag.outputs.TAG_NAME }}-php-5.6.zip
+          key: ${{ steps.set-tag.outputs.TAG_NAME }}-${{ github.sha }}-php-5
+
+  build-zip-php-7:
+    name: Build the PHP 7 & 8 compatible ZIP
+    needs: [check, test]
+    runs-on: ubuntu-20.04
+    if: startsWith(github.ref, 'refs/tags/') # only tags
+    steps:
+      - name: Get tag name
+        id: set-tag
+        run: echo "TAG_NAME=${GITHUB_REF:10}" >> $GITHUB_OUTPUT
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 7.0
+      - name: Build ZIP
+        run: ./release/build_release_package.sh
+        env:
+          TAG_NAME: ${{ steps.set-tag.outputs.TAG_NAME }}
+          PHP_VERSION: 'php-7'
+      - name: Store to cache
+        uses: actions/cache@v3
+        with:
+          path: ./release/shopgate-oxid-integration-${{ steps.set-tag.outputs.TAG_NAME }}-php-7.zip
+          key: ${{ steps.set-tag.outputs.TAG_NAME }}-${{ github.sha }}-php-7
+
+  release:
+    name: Create GitHub release & attach ZIP files
+    needs: [build-zip-php-5, build-zip-php-7]
+    if: startsWith(github.ref, 'refs/tags/') # only tags
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Get tag name
+        id: set-tag
+        run: echo "TAG_NAME=${GITHUB_REF:10}" >> $GITHUB_OUTPUT
+      - name: Load from cache (PHP 5)
+        uses: actions/cache@v3
+        with:
+          path: ./release/shopgate-oxid-integration-${{ steps.set-tag.outputs.TAG_NAME }}-php-5.6.zip
+          key: ${{ steps.set-tag.outputs.TAG_NAME }}-${{ github.sha }}-php-5
+      - name: Load from cache (PHP 7 & 8)
+        uses: actions/cache@v3
+        with:
+          path: ./release/shopgate-oxid-integration-${{ steps.set-tag.outputs.TAG_NAME }}-php-7.zip
+          key: ${{ steps.set-tag.outputs.TAG_NAME }}-${{ github.sha }}-php-7
+      - name: Release & upload
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ steps.set-tag.outputs.TAG_NAME }}
+          name: Shopgate Cart Integration Oxid ${{ steps.set-tag.outputs.TAG_NAME }}
+          draft: true
+          prerelease: true
+          fail_on_unmatched_files: true
+          files: |
+            ./release/shopgate-oxid-integration-${{ steps.set-tag.outputs.TAG_NAME }}-php-5.6.zip
+            ./release/shopgate-oxid-integration-${{ steps.set-tag.outputs.TAG_NAME }}-php-7.zip
+
+  notify-release-success:
+    name: Notify developers of new release
+    needs: [release]
+    runs-on: ubuntu-20.04
+    if: |
+      success() &&
+      startsWith(github.ref, 'refs/tags/')
+    steps:
+      - name: Get tag name
+        id: set-tag
+        run: echo "TAG_NAME=${GITHUB_REF:10}" >> $GITHUB_OUTPUT
+      - name: Notify on Slack
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_MERCHANT_UNIT }}
+          SLACK_USERNAME: 'GitHub Actions'
+          SLACK_ICON_EMOJI: ':octocat:'
+          SLACK_TITLE: New release for ${{ github.repository }}
+          SLACK_MESSAGE: Released version ${{ steps.set-tag.outputs.TAG_NAME }} of ${{ github.repository }}
+
+  notify-release-fail:
+    name: Notify developers of failed release
+    needs: [release]
+    runs-on: ubuntu-20.04
+    if: |
+      failure() &&
+      startsWith(github.ref, 'refs/tags/')
+    steps:
+      - name: Get tag name
+        id: set-tag
+        run: echo "TAG_NAME=${GITHUB_REF:10}" >> $GITHUB_OUTPUT
+      - name: Notify on Slack
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_MERCHANT_UNIT }}
+          SLACK_USERNAME: 'GitHub Actions'
+          SLACK_ICON_EMOJI: ':octocat:'
+          SLACK_COLOR: '#A30200'
+          SLACK_TITLE: Release failed for ${{ github.repository }}
+          SLACK_MESSAGE: Release failed for version ${{ steps.set-tag.outputs.TAG_NAME }} of ${{ github.repository }}
