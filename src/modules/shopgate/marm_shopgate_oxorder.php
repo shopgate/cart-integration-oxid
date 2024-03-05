@@ -149,9 +149,10 @@ class marm_shopgate_oxorder extends marm_shopgate_oxorder_parent
 
     protected function _executePayment(oxBasket $oBasket, $oUserpayment)
     {
-        if (defined("_SHOPGATE_API") && _SHOPGATE_API && defined(
-                "_SHOPGATE_ACTION"
-            ) && _SHOPGATE_ACTION == 'add_order') {
+        if (
+            defined('_SHOPGATE_API') && _SHOPGATE_API &&
+            defined('_SHOPGATE_ACTION') && _SHOPGATE_ACTION == 'add_order'
+        ) {
             return true;
         }
 

@@ -259,9 +259,7 @@ class marm_shopgate
      */
     protected function getFrameworkDir()
     {
-        return marm_shopgate::getOxConfig()->getConfigParam(
-                'sShopDir'
-            ) . DIRECTORY_SEPARATOR . self::FRAMEWORK_DIR . DIRECTORY_SEPARATOR;
+        return marm_shopgate::getOxConfig()->getConfigParam('sShopDir') . DIRECTORY_SEPARATOR . self::FRAMEWORK_DIR . DIRECTORY_SEPARATOR;
     }
 
     /**

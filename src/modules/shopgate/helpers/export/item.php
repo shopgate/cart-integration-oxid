@@ -377,10 +377,7 @@ class ShopgateItemExportHelper
                         : 'Available on',
                 )
             );
-            $result      .= ' ' . $availableOn . ' ' . date(
-                    'd.m.Y',
-                    (strtotime($oxArticle->oxarticles__oxdelivery->value))
-                );
+            $result .= " $availableOn  " . date('d.m.Y', (strtotime($oxArticle->oxarticles__oxdelivery->value)));
         }
 
         return $result;
@@ -1038,10 +1035,9 @@ class ShopgateItemExportHelper
      */
     public function getCost(oxArticle $oxArticle)
     {
-        return oxPrice::brutto2Netto(
-                $oxArticle->oxarticles__oxbprice->value,
-                $oxArticle->getArticleVat()
-            ) * $this->getVpe($oxArticle);
+        return
+            oxPrice::brutto2Netto($oxArticle->oxarticles__oxbprice->value, $oxArticle->getArticleVat()) *
+            $this->getVpe($oxArticle);
     }
 
     /**
@@ -1234,10 +1230,9 @@ class ShopgateItemExportHelper
         if ($oxArticle->getTPrice()) { // Can be null
             if ($asNet) {
                 // Don't use $oxArticle->getTPrice()->getNettoPrice() here, 'cause it gives us only a rounded value.
-                return oxPrice::brutto2Netto(
-                        $oxArticle->getTPrice()->getBruttoPrice(),
-                        $oxArticle->getArticleVat()
-                    ) * $this->getVpe($oxArticle);
+                return
+                    oxPrice::brutto2Netto($oxArticle->getTPrice()->getBruttoPrice(), $oxArticle->getArticleVat()) *
+                    $this->getVpe($oxArticle);
             }
 
             return $oxArticle->getTPrice()->getBruttoPrice() * $this->getVpe($oxArticle);

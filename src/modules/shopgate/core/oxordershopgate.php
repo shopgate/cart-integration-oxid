@@ -261,8 +261,10 @@ class oxOrderShopgate extends oxBase
             $this->oxordershopgate__is_sent_to_shopgate = new oxField("1", oxField::T_RAW);
             $this->save();
         } catch (ShopgateMerchantApiException $e) {
-            if ($e->getCode() == ShopgateMerchantApiException::ORDER_SHIPPING_STATUS_ALREADY_COMPLETED || $e->getCode(
-                ) == ShopgateMerchantApiException::ORDER_ALREADY_COMPLETED) {
+            if (
+                $e->getCode() == ShopgateMerchantApiException::ORDER_SHIPPING_STATUS_ALREADY_COMPLETED ||
+                $e->getCode() == ShopgateMerchantApiException::ORDER_ALREADY_COMPLETED
+            ) {
                 $this->oxordershopgate__is_sent_to_shopgate = new oxField("1", oxField::T_RAW);
                 $this->save();
             }

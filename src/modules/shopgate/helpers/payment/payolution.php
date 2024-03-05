@@ -87,35 +87,18 @@ class ShopgatePaymentHelperPayolution extends ShopgatePaymentHelper
     {
         $oxUserPayment = parent::createOxUserPayment();
 
-        $paymentInfos                           = $this->shopgateOrder->getPaymentInfos();
-        $isInstallment                          = ($this->shopgateOrder->getPaymentMethod(
-            ) == ShopgateOrder::PAYOL_INS);
-        $info                                   = array(
+        $paymentInfos = $this->shopgateOrder->getPaymentInfos();
+        $isInstallment = ($this->shopgateOrder->getPaymentMethod() == ShopgateOrder::PAYOL_INS);
+        $info = array(
             'payolution_installment_birthday'       => $this->shopgateOrder->getInvoiceAddress()->getBirthday(),
-            'payolution_installment_terms'          => $isInstallment
-                ? 1
-                : 0,
-            'payolution_installment_privacy'        => $isInstallment
-                ? 1
-                : 0,
-            'payolution_installment_iban'           => $isInstallment
-                ? $paymentInfos['bank_data']['bank_iban']
-                : '',
-            'payolution_installment_bic'            => $isInstallment
-                ? $paymentInfos['bank_data']['bank_bic']
-                : '',
-            'payolution_installment_account_holder' => $isInstallment
-                ? $paymentInfos['bank_data']['bank_holder']
-                : '',
-            'payolution_installment_period'         => $isInstallment
-                ? $paymentInfos['plan']['duration']
-                : '',
-            'payolution_b2c_terms'                  => $isInstallment
-                ? 0
-                : 1,
-            'payolution_b2c_privacy'                => $isInstallment
-                ? 0
-                : 1,
+            'payolution_installment_terms'          => $isInstallment ? 1 : 0,
+            'payolution_installment_privacy'        => $isInstallment ? 1 : 0,
+            'payolution_installment_iban'           => $isInstallment ? $paymentInfos['bank_data']['bank_iban'] : '',
+            'payolution_installment_bic'            => $isInstallment ? $paymentInfos['bank_data']['bank_bic'] : '',
+            'payolution_installment_account_holder' => $isInstallment ? $paymentInfos['bank_data']['bank_holder'] : '',
+            'payolution_installment_period'         => $isInstallment ? $paymentInfos['plan']['duration'] : '',
+            'payolution_b2c_terms'                  => $isInstallment ? 0 : 1,
+            'payolution_b2c_privacy'                => $isInstallment ? 0 : 1,
             'payolution_b2c_birthday'               => $this->shopgateOrder->getInvoiceAddress()->getBirthday(),
             // The following fields are always empty (since we don't support Payolution B2B), but should be present anyway.
             'payolution_b2b_ust_id'                 => '',
