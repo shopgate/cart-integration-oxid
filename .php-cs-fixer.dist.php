@@ -18,12 +18,14 @@ $fixers = array(
     'method_argument_space' => false,
 );
 
-return Config::create()
+$config = new Config();
+$finder = new Finder();
+return $config
     ->setRiskyAllowed(true)
     ->setUsingCache(true)
     ->setRules($fixers)
     ->setFinder(
-        Finder::create()
+        $finder
            ->exclude('vendor')
            ->exclude('vendors')
             ->in(__DIR__)

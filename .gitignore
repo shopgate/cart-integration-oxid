@@ -6,6 +6,9 @@
 /.idea
 /src/modules/shopgate/vendor/
 /.php-cs.cache
+/.php_cs.cache
+/.php-cs-fixer.cache
+/.phpunit.result.cache
 /release/package
 composer.lock
 .DS_Store
