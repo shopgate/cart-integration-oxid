@@ -7,3 +7,4 @@
 /src/modules/shopgate/vendor/
 /.php-cs.cache
 /release/package
+composer.lock
