@@ -27,4 +27,8 @@ rsync -av ./CONTRIBUTING.md release/package/Bis_eShop_4.6/copy_this/modules/shop
 rsync -av ./CHANGELOG.md release/package/Bis_eShop_4.6/copy_this/modules/shopgate
 
 cd release/package
-zip -r ../../$ZIP_FILE_NAME .
+zip -r ../$ZIP_FILE_NAME .
+cd ..
+rm -rf package
+cd ..
+rm -rf src/modules/shopgate/vendor
