@@ -10,10 +10,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 - installation can now be resumed after it was aborted during installing database schemas
 
 ### Changed
-- uses Shopgate Cart Integration SDK v2.10.2
+- uses Shopgate Cart Integration SDK v2.10.3
 
 ### Added
-- compatibility with Oxid CE 6.1
+- compatibility with Oxid CE up to 6.5 included
 - compatibility with PHP 7 & 8
 - enabled installation via Composer / packagist.org if desired
 
