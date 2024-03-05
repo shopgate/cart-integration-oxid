@@ -23,7 +23,13 @@ $shopgate_plugin_dir = dirname(__FILE__) . '/..';
 if (stripos($shopgate_plugin_dir, 'modules/shopgate') === false) {
     $shopgate_plugin_dir .= '/modules/shopgate';
 }
-require_once "$shopgate_plugin_dir/vendor/autoload.php";
+
+// package-internal autoloader only exists upon manual installation, not on Composer installation
+$composerAutoloaderPath = dirname(__FILE__) . '/vendor/autoload.php';
+if (file_exists($composerAutoloaderPath)) {
+    require_once($composerAutoloaderPath);
+}
+
 require_once "$shopgate_plugin_dir/shopgate_install_helper.php";
 
 class marm_shopgate
@@ -223,7 +229,7 @@ class marm_shopgate
 
         $dbObj = oxDb::getDb(true);
         if (version_compare($currentVersion, $breakVersion, ">=")) {
-            $mode  = defined(ADODB_FETCH_ASSOC) ? ADODB_FETCH_ASSOC : 2;
+            $mode  = defined('ADODB_FETCH_ASSOC') ? ADODB_FETCH_ASSOC : 2;
             $dbObj = oxDb::getDb($mode);
         }
 
