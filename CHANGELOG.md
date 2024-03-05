@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+## [2.10.0] - 2024-03-05
 ### Fixed
 - PHP warnings by accessing undefined constant `ADODB_FETCH_ASSOC`
 - installation can now be resumed after it was aborted during installing database schemas
@@ -857,7 +858,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## 2.0.0
 - New Release for this module
 
-[Unreleased]: https://github.com/shopgate/cart-integration-oxid/compare/2.9.78...HEAD
+[Unreleased]: https://github.com/shopgate/cart-integration-oxid/compare/2.10.0...HEAD
+[2.10.0]: https://github.com/shopgate/cart-integration-oxid/compare/2.9.78...2.10.0
 [2.9.78]: https://github.com/shopgate/cart-integration-oxid/compare/2.9.77...2.9.78
 [2.9.77]: https://github.com/shopgate/cart-integration-oxid/compare/2.9.76...2.9.77
 [2.9.76]: https://github.com/shopgate/cart-integration-oxid/compare/2.9.75...2.9.76
