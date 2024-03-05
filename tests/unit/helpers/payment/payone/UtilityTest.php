@@ -22,12 +22,14 @@
 
 namespace unit\helpers\payment\payone;
 
-class UtilityTest extends \PHPUnit_Framework_TestCase
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
+
+class UtilityTest extends TestCase
 {
     /** @var \ShopgatePaymentHelperPayoneUtility */
     private $subjectUnderTest;
 
-    public function setUp()
+    public function set_up()
     {
         $this->subjectUnderTest = $this->getMockBuilder('ShopgatePaymentHelperPayoneUtility')
             ->disableOriginalConstructor()

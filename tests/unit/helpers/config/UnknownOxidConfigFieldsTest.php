@@ -22,7 +22,9 @@
 
 namespace unit\helpers\export;
 
-class UnknownOxidConfigFieldsTest extends \PHPUnit_Framework_TestCase
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
+
+class UnknownOxidConfigFieldsTest extends TestCase
 {
     /** @var \ShopgateUnknownOxidConfigFields */
     private $subjectUnderTest;
@@ -36,7 +38,7 @@ class UnknownOxidConfigFieldsTest extends \PHPUnit_Framework_TestCase
     /** @var \marm_shopgate|\PHPUnit_Framework_MockObject_MockObject */
     private $marmShopgateMock;
 
-    public function setUp()
+    public function set_up()
     {
         $this->oxidConfigMock = $this->getMockBuilder('\oxConfig')
             ->setMethods(array('saveShopConfVar', 'getConfigParam'))

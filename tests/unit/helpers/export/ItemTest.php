@@ -22,7 +22,9 @@
 
 namespace unit\helpers\export;
 
-class ItemTest extends \PHPUnit_Framework_TestCase
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
+
+class ItemTest extends TestCase
 {
     /**
      * See OXID-339 for more information

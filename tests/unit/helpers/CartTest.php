@@ -19,13 +19,14 @@
  * @license   http://www.apache.org/licenses/LICENSE-2.0 Apache License, Version 2.0
  */
 
+use Yoast\PHPUnitPolyfills\TestCases\TestCase;
 
-class CartTest extends \PHPUnit_Framework_TestCase
+class CartTest extends TestCase
 {
     /** @var \ShopgateCartHelper */
     private $subjectUnderTest;
 
-    public function setUp()
+    public function set_up()
     {
         $this->subjectUnderTest = $this->getMockBuilder('ShopgateCartHelper')
             ->disableOriginalConstructor()
