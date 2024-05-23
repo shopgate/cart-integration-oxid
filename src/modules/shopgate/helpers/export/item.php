@@ -68,6 +68,14 @@ class ShopgateItemExportHelper
         $this->initItemInCategorySortCache($articleIds);
         $this->initHighlightItemsCache();
         $this->initManufacturersCache();
+
+        // try loading oxcmp_utils for compatibility though it's deprecated since 6.0.0
+        // load the replacement UtilsComponent as a fallback in case oxcmp_utils doesn't exist anymore
+        $oxUtilsComponentClass = class_exists('oxcmp_utils') ? 'oxcmp_utils' : '\OxidEsales\Eshop\Application\Component\UtilsComponent';
+        if (class_exists($oxUtilsComponentClass)) {
+            $smarty = $this->marmShopgate->getOxUtilsView()->getSmarty();
+            $smarty->assign('oxcmp_utils', oxNew($oxUtilsComponentClass));
+        }
     }
 
     /**
