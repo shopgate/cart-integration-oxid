@@ -20,7 +20,7 @@
  */
 
 if (!defined('SHOPGATE_PLUGIN_VERSION')) {
-    define("SHOPGATE_PLUGIN_VERSION", "2.10.0");
+    define("SHOPGATE_PLUGIN_VERSION", "2.10.1-beta.1");
 }
 
 /**
