@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Fixed
+- using the `oxcmp_utils` component in the product description would lead the product export crashing
+
 ## [2.10.0] - 2024-03-05
 ### Fixed
 - PHP warnings by accessing undefined constant `ADODB_FETCH_ASSOC`
