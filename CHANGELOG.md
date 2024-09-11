@@ -5,6 +5,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Fixed
+- failing PayPalPlus order import
+
 ## [2.10.1] - 2024-06-14
 ### Fixed
 - using the `oxcmp_utils` component in the product description would lead the product export crashing
