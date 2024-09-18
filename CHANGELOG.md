@@ -5,6 +5,8 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [2.10.2] - 2024-09-18
 ### Fixed
 - failing PayPalPlus order import
 
@@ -865,7 +867,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## 2.0.0
 - New Release for this module
 
-[Unreleased]: https://github.com/shopgate/cart-integration-oxid/compare/2.10.1...HEAD
+[Unreleased]: https://github.com/shopgate/cart-integration-oxid/compare/2.10.2...HEAD
+[2.10.2]: https://github.com/shopgate/cart-integration-oxid/compare/2.10.1...2.10.2
 [2.10.1]: https://github.com/shopgate/cart-integration-oxid/compare/2.10.0...2.10.1
 [2.10.0]: https://github.com/shopgate/cart-integration-oxid/compare/2.9.78...2.10.0
 [2.9.78]: https://github.com/shopgate/cart-integration-oxid/compare/2.9.77...2.9.78
