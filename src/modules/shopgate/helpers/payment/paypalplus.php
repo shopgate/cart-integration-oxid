@@ -35,8 +35,11 @@ class ShopgatePaymentHelperPaypalPlus extends ShopgatePaymentHelper
     {
         $paymentInfos = $this->shopgateOrder->getPaymentInfos();
 
-        /** @var oxpsPayPalPlusPaymentData $data */
-        $data = oxNew('oxpsPayPalPlusPaymentData');
+        $oxPayPalPlusClass = class_exists('oxpsPayPalPlusPaymentData')
+            ? 'oxpsPayPalPlusPaymentData'
+            : 'paypPayPalPlusPaymentData';
+        /** @var oxpsPayPalPlusPaymentData|paypPayPalPlusPaymentData $data */
+        $data = oxNew($oxPayPalPlusClass);
 
         $data->setOrderId($this->oxOrder->getId());
         $data->setSaleId($paymentInfos['payment_transaction_id']);
