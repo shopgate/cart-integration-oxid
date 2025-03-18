@@ -238,6 +238,8 @@ class Module
         return $oOldInstance;
     }
 
+    // TODO got 'til here. remove all the yellows from here on down, then the next files
+
     /**
      * returns full path, where framework is placed.
      *

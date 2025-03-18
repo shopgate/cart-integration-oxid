@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Added
+- support for Oxid 7.x
+
+### Removed
+- support for Oxid versions lower than 6.0.0
+
+## TODO
+- add namespaces to all classes
+- check & fix class imports (e.g. Module is often referenced but not imported)
+- remove version conditionals for anything lower than 6.0.0
+- replace references to ox... classes with references to the new namespaced classes
+- replace deprecated DatabaseProvider
+- register controllers in metadata.php
 
 ## [2.10.2] - 2024-09-18
 ### Fixed
