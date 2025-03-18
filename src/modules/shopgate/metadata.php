@@ -27,7 +27,7 @@ if (!defined('SHOPGATE_PLUGIN_VERSION')) {
 /**
  * Metadata version
  */
-$sMetadataVersion = '1.1';
+$sMetadataVersion = '2.1';
 
 /**
  * Module information
@@ -44,30 +44,25 @@ $aModule = array(
     'email'       => 'technik@shopgate.com',
     'url'         => 'http://www.shopgate.com',
     'extend'      => array(
-        'oxorder'          => 'shopgate/marm_shopgate_oxorder',
-        'oxoutput'         => 'shopgate/marm_shopgate_oxoutput',
-        'oxarticle'        => 'shopgate/marm_shopgate_oxarticle',
-        'order_overview'   => 'shopgate/shopgate_order_overview',
-        'order_main'       => 'shopgate/shopgate_order_overview',
-        'oxvarianthandler' => 'shopgate/shopgate_oxvarianthandler',
-        'oxvoucher'        => 'shopgate/shopgate_oxvoucher',
-        'oxbasket'         => 'shopgate/shopgate_oxbasket',
-        'oxdeliverylist'   => 'shopgate/shopgate_oxdeliverylist',
-        'oxsession'        => 'shopgate/shopgate_oxsession',
-    ),
-    'files'       => array(
-        'marm_shopgate'   => 'shopgate/core/marm_shopgate.php',
-        'oxOrderShopgate' => 'shopgate/core/oxordershopgate.php',
+        // not using Oxid _parent structure:
+        // OxidEsales\Eshop\Application\Controller\FrontendController::class => Shopgate\Oxid\Controller\ShopgatePluginApi::class,
 
-        'marm_shopgate_article' => 'shopgate/admin/marm_shopgate_article.php',
-        'marm_shopgate_config'  => 'shopgate/admin/marm_shopgate_config.php',
+        OxidEsales\Eshop\Application\Model\Article::class => Shopgate\Oxid\Model\Article::class,
+        OxidEsales\Eshop\Application\Model\Basket::class => Shopgate\Oxid\Model\Basket::class,
+        OxidEsales\Eshop\Application\Model\DeliveryList::class => Shopgate\Oxid\Model\DeliveryList::class,
+        OxidEsales\Eshop\Application\Model\Order::class => Shopgate\Oxid\Model\Order::class,
+        OxidEsales\Eshop\Application\Model\VariantHandler::class => Shopgate\Oxid\Model\VariantHandler::class,
+        OxidEsales\Eshop\Application\Model\Voucher::class => Shopgate\Oxid\Model\Voucher::class,
 
-        'shopgate_order'    => 'shopgate/admin/shopgate_order.php',
-        'shopgate_shipping' => 'shopgate/admin/shopgate_shipping.php',
-        'shopgate_payment'  => 'shopgate/admin/shopgate_payment.php',
-        'shopgate_actions'  => 'shopgate/admin/shopgate_actions.php',
+        OxidEsales\Eshop\Application\Controller\Admin\ActionsController::class => Shopgate\Oxid\Controller\Admin\Actions::class,
+        OxidEsales\Eshop\Application\Controller\Admin\ArticleController::class => Shopgate\Oxid\Controller\Admin\Article::class,
+        OxidEsales\Eshop\Application\Controller\Admin\ShopConfiguration::class => Shopgate\Oxid\Controller\Admin\Config::class,
+        OxidEsales\Eshop\Application\Controller\Admin\OrderMain::class => Shopgate\Oxid\Controller\Admin\Order::class,
+        OxidEsales\Eshop\Application\Controller\Admin\OrderOverview::class => Shopgate\Oxid\Controller\Admin\OrderOverview::class,
+        OxidEsales\Eshop\Application\Controller\Admin\PaymentMain::class => Shopgate\Oxid\Controller\Admin\Payment::class,
+        OxidEsales\Eshop\Application\Controller\Admin\DeliverySetMain::class => Shopgate\Oxid\Controller\Admin\Shipping::class,
 
-        'marm_shopgate_api' => 'shopgate/views/marm_shopgate_api.php',
+        OxidEsales\Eshop\Core\Output::class => Shopgate\Oxid\Core\Output::class,
     ),
     'templates'   => array(
         'marm_shopgate_article.tpl' => 'shopgate/out/admin/tpl/marm_shopgate_article.tpl',

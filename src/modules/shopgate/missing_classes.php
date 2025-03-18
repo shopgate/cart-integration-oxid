@@ -49,8 +49,6 @@ if (false) {
     {
     }
 
-    ;
-
     /** @noinspection PhpMultipleClassesDeclarationsInOneFile */
     class shopgate_oxbasket_parent extends oxBasket
     {

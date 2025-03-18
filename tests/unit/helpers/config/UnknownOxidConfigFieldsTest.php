@@ -32,10 +32,10 @@ class UnknownOxidConfigFieldsTest extends TestCase
     /** @var \oxConfig|\PHPUnit_Framework_MockObject_MockObject */
     private $oxidConfigMock;
 
-    /** @var \ShopgateConfigOxid|\PHPUnit_Framework_MockObject_MockObject */
+    /** @var \Config|\PHPUnit_Framework_MockObject_MockObject */
     private $shopgateConfigMock;
 
-    /** @var \marm_shopgate|\PHPUnit_Framework_MockObject_MockObject */
+    /** @var \Module|\PHPUnit_Framework_MockObject_MockObject */
     private $marmShopgateMock;
 
     public function set_up()
@@ -44,11 +44,11 @@ class UnknownOxidConfigFieldsTest extends TestCase
             ->setMethods(array('saveShopConfVar', 'getConfigParam'))
             ->getMock();
 
-        $this->shopgateConfigMock = $this->getMockBuilder('\ShopgateConfigOxid')
+        $this->shopgateConfigMock = $this->getMockBuilder('\Config')
             ->disableOriginalConstructor()
             ->getMock();
 
-        $this->marmShopgateMock = $this->getMockBuilder('marm_shopgate')
+        $this->marmShopgateMock = $this->getMockBuilder('ShopgateModule')
             ->setMethods(array('getOxidConfigKey'))
             ->disableOriginalConstructor()
             ->getMock();

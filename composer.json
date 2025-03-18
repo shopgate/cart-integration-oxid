@@ -26,7 +26,8 @@
     "check&test": ["@check", "@test"]
   },
   "require": {
-    "php": ">=5.3",
+    "php": ">=5.6",
+    "ext-curl": "*",
     "shopgate/cart-integration-sdk" : "~2.10.3"
   },
   "require-dev": {
@@ -37,7 +38,8 @@
   "autoload": {
     "psr-4": {
       "unit\\": "tests/unit/",
-      "tests\\" : "tests/"
+      "tests\\": "tests/",
+      "Shopgate\\Oxid\\": "src/modules/shopgate"
     }
   }
 }

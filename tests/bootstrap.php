@@ -30,8 +30,8 @@ require_once dirname(__FILE__) . '/../src/modules/shopgate/helpers/export/settin
 require_once dirname(__FILE__) . '/../src/modules/shopgate/helpers/payment/base.php';
 require_once dirname(__FILE__) . '/../src/modules/shopgate/helpers/payment/payone/utility.php';
 require_once dirname(__FILE__) . '/../src/modules/shopgate/helpers/payment/models/payone_payment_infos.php';
-require_once dirname(__FILE__) . '/../src/modules/shopgate/model/export/item.php';
-require_once dirname(__FILE__) . '/../src/modules/shopgate/model/export/category.php';
-require_once dirname(__FILE__) . '/../src/modules/shopgate/model/export/review.php';
+require_once dirname(__FILE__) . '/../src/modules/shopgate/Shopgate/export/item.php';
+require_once dirname(__FILE__) . '/../src/modules/shopgate/Shopgate/export/category.php';
+require_once dirname(__FILE__) . '/../src/modules/shopgate/Shopgate/export/review.php';
 require_once dirname(__FILE__) . '/../src/modules/shopgate/helpers/shopgate_order_export_helper.php';
 require_once dirname(__FILE__) . '/../src/modules/shopgate/metadata.php';
